@@ -16,5 +16,6 @@ class Bullet {
 
   void move() {
     y-=2;
+          float a = random(1);
   }
 }

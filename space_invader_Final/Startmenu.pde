@@ -9,7 +9,7 @@ void startmenu() {
   textAlign(CENTER);
   fill(0);
   textSize(20);
-  text(" Space Invaders", width/2, height/2-40);
+  text("Space Invaders", width/2, height/2-40);
   textSize(15);
   fill(#FF4D4D);
   rect(width/2, height/2, 100, 30, 10, 10, 10, 10);
@@ -19,5 +19,6 @@ void startmenu() {
   fill(0);
   textSize(10);
   popStyle();
-  if (mousePressed && dist(mouseX, mouseY, width/2, height/2)<50)startGame = true;
+  if (mousePressed && dist(mouseX, mouseY, width/2, height/2)<50)
+    startGame = true;
 }

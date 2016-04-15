@@ -9,21 +9,21 @@ float y, sx;
 
 float deltay=0.1; //speed of the invaders
 
-int level=0;
+int level=3;
 
 boolean gamelost = false, gamewin = false;
 
 boolean BERNDS_COOL_ROCKETBOOST = true;
 
 /* Schwirigkietsstufen 0 - 7
-*  Speed
-*  andere Bewegungen der Aliens
-*  mehr Aliens spawnen
-*  zellteilung
-*  kleinere Aliens
-*  tarnmodus
-*  Ablenkender Hintergrund
-**/
+ *  Speed
+ *  andere Bewegungen der Aliens
+ *  mehr Aliens spawnen
+ *  zellteilung
+ *  kleinere Aliens
+ *  tarnmodus
+ *  Ablenkender Hintergrund
+ **/
 
 
 
@@ -40,7 +40,7 @@ void draw() {
   if (startGame) {
     //------------------
     for (Alien a : AlienList)
-      a.show();
+      a.show(level);
     for (Bullet b : bulletList) {
       b.move();
       b.show();
@@ -49,7 +49,7 @@ void draw() {
     //------------------------------
     for (int i=AlienList.size ()-1; i>=0; i--) {
       Alien A = AlienList.get(i);
-      if (!gamelost)A.move();
+      if (!gamelost)A.move(level);
       for (int j=bulletList.size ()-1; j>=0; j--) {
         Bullet B  =  bulletList.get(j);
         if ((sq(B.x-A.x)+sq(B.y-A.y))<sq(10)) { // check distance
@@ -104,7 +104,6 @@ void draw() {
       timer=0;
       gamewin=false;
       level++;
-      deltay+=5/100.0;
     }
   }
   if (gamelost) {
@@ -137,15 +136,15 @@ void draw() {
 
 
 void ship() {
-  if(BERNDS_COOL_ROCKETBOOST){
-  fill(#4DFFFD,120);
-  ellipse(0,20,12,sin(2*PI/20.*frameCount)*10+10);
-  fill(#4DFFFD,120);
-  ellipse(0,20,5,sin(2*PI/10.*frameCount+2)*10+10);
-  fill(#4DFFFD,120);
+  if (BERNDS_COOL_ROCKETBOOST) {
+    fill(#4DFFFD, 120);
+    ellipse(0, 20, 12, sin(2*PI/20.*frameCount)*10+10);
+    fill(#4DFFFD, 120);
+    ellipse(0, 20, 5, sin(2*PI/10.*frameCount+2)*10+10);
+    fill(#4DFFFD, 120);
   }
-  
-  ellipse(0,14,12,12);
+
+  ellipse(0, 14, 12, 12);
   fill(#ffedbc);
   noStroke();
   beginShape();

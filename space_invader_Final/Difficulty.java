@@ -1,8 +1,10 @@
-class Difficulty {
-  
+import java.math.*;
+
+public class Difficulty {
+      
   private Difficulty(){}
   
-  public float getSpeedY(int level) {
+  public static float getSpeedY(int level) {
     switch(level) {
       case 0:
         return 0.1f;
@@ -12,25 +14,31 @@ class Difficulty {
         return 0.3f;
       case 3:
         return 0.4f;
-        
       default:
         return 0.1f;
     }
   }
   
-  public float getAlienScale(int level) {
+  public static float getAlienScale(int level) {
+    
+    float max;
+       
     switch(level) {
       case 0:
         return 1.0f;
       case 1:
-        return random(1.2f);
+        max = 1.2f;
+        break;
       case 2:
-        return random(1.3f);
+        max = 1.3f;
+        break;
       case 3:
-        return random(1.5f);
-        
+        max = 1.5f;
+        break;
       default:
         return 1.0f;
     }
+    
+    return ((float) Math.random()) * (max - 1.0f) + 1.0f;
   }
 }

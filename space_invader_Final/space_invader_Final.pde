@@ -40,7 +40,7 @@ void draw() {
   if (startGame) {
     //------------------
     for (Alien a : AlienList)
-      a.show(level);
+      a.show();
     for (Bullet b : bulletList) {
       b.move();
       b.show();
@@ -163,7 +163,7 @@ void ship() {
 void AddAlien() {
   for (int i=0; i<10; i++) {
     for (int j=0; j<5; j++) {
-      Alien F =  new Alien(i*width/10+20, j*40+10);
+      Alien F =  new Alien(i*width/10+20, j*40+10, level);
       AlienList.add(F);
     }
   }

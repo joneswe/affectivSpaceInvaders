@@ -9,7 +9,7 @@ float y, sx;
 
 float deltay=0.1; //speed of the invaders
 
-int level=3;
+int level=0;
 
 boolean gamelost = false, gamewin = false;
 
@@ -162,7 +162,7 @@ void ship() {
 
 void AddAlien() {
   for (int i=0; i<10; i++) {
-    for (int j=0; j<5; j++) {
+    for (int j=0; j<Difficulty.getAlienRowCount(level); j++) {
       Alien F =  new Alien(i*width/10+20, j*40+10, level);
       AlienList.add(F);
     }
@@ -205,10 +205,12 @@ void control() {
     if (sx<=0)sx=0;
     else sx-=1.5;
   }
+  
   if (keyright) {
     if (sx>=width)sx=width;
     else sx+=1.5;
   }
+  
   if (hit) {
     Bullet B = new Bullet(sx, y-30);
     bulletList.add(B); 
@@ -219,6 +221,6 @@ void control() {
     Particle P = blastList.get(i);
     P.display();
     P.move();
-    if (P.r<0)blastList.remove(i);
+    if (P.r<0) blastList.remove(i);
   }
 }

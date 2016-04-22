@@ -36,7 +36,13 @@ void setup() {
 }
 
 void draw() {
-  background(#102439); 
+  background(Difficulty.getBackgroundColor(level));
+  
+  textAlign(CENTER);
+  textSize(20);
+  fill(#F50041);
+  text(level + 1, width/2, 30);
+  
   if (startGame) {
     //------------------
     for (Alien a : AlienList)
